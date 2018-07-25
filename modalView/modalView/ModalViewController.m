@@ -16,6 +16,7 @@
 
 +(instancetype)initWithBlock:(modalBlock)block{
     ModalViewController *modalVC = [[ModalViewController alloc]init];
+     modalVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     if (modalVC) {
         modalVC.modalB = block;
     }
@@ -32,13 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self.view setBackgroundColor:[UIColor redColor]];
     // Do any additional setup after loading the view from its nib.
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
