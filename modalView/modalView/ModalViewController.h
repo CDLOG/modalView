@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 typedef void(^modalBlock)(NSString *name);
+typedef void(^textBlock)(NSString *text);
 @interface ModalViewController : UIViewController
-
+@property (strong,nonatomic) textBlock textB;
 +(instancetype)initWithBlock:(modalBlock)block;
 @end

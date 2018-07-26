@@ -10,23 +10,26 @@
 
 @interface ModalViewController ()
 @property (copy,nonatomic) modalBlock modalB;
+@property (strong,nonatomic) ModalViewController *modalVC;
 @end
 
 @implementation ModalViewController
 
 +(instancetype)initWithBlock:(modalBlock)block{
-    ModalViewController *modalVC = [[ModalViewController alloc]init];
+      ModalViewController *modalVC= [[ModalViewController alloc]init];
      modalVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     if (modalVC) {
         modalVC.modalB = block;
     }
     return modalVC;
 }
-
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NSLog(@"333");
     if (self.modalB) {
         self.modalB(@"666");
+    }
+    if (self.textB) {
+        self.textB(@"777");
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

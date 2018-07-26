@@ -42,6 +42,9 @@
     ModalViewController *VC  = [ModalViewController initWithBlock:^(NSString *name) {
         NSLog(@"%@",name);
     }];
+    VC.textB = ^(NSString *text) {
+        NSLog(@"%@",text);
+    };
     
     [self presentViewController:VC animated:YES completion:nil];
     
