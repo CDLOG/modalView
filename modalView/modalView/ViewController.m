@@ -10,6 +10,7 @@
 #import "modalView.h"
 #import "ModalViewController.h"
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *hudView;
 @property (strong, nonatomic) modalView * modalV;
 @end
 
@@ -17,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.hudView setHidden:YES];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0, 30, 30)];
     view.backgroundColor = [UIColor greenColor];
     
@@ -39,13 +40,17 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)modalControl:(id)sender {
-    ModalViewController *VC  = [ModalViewController initWithBlock:^(NSString *name) {
-        NSLog(@"%@",name);
-    }];
+//    ModalViewController *VC  = [ModalViewController initWithBlock:^(NSString *name) {
+//        NSLog(@"%@",name);
+//    }];
+
+    ModalViewController *VC  = [[ModalViewController alloc]init];
+    [VC setModalPresentationStyle:UIModalPresentationOverFullScreen];
     VC.textB = ^(NSString *text) {
         NSLog(@"%@",text);
+        [self.hudView setHidden:YES];
     };
-    
+    [self.hudView setHidden:NO];
     [self presentViewController:VC animated:YES completion:nil];
     
     
