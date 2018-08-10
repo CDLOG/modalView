@@ -23,14 +23,19 @@
     }
     return modalVC;
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"333");
+
+-(void)doBlock{
     if (self.modalB) {
-        self.modalB(@"666");
+        self.modalB(@"通用执行的代码");
     }
     if (self.textB) {
-        self.textB(@"777");
+        self.textB(@"调用了block");
     }
+}
+//执行回调并推出
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"333");
+    [self doBlock];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
